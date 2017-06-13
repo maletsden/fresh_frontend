@@ -5,6 +5,7 @@ const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const extractCSS = new ExtractTextPlugin('./css/style.css');
 var postcssUrl = require("postcss-url");
+
 module.exports = {
   context: __dirname + '/src/',
   entry: {
@@ -68,8 +69,8 @@ new webpack.optimize.UglifyJsPlugin({
   module: {
     rules: [{
         test: /\.js$/,
-        include: path.resolve(__dirname, "js"),
-        exclude: path.resolve(__dirname, "js/no_babel"),
+        include: path.resolve(__dirname, "src/js"),
+        exclude: path.resolve(__dirname, "src/js/no_babel"),
         use: {
           loader: 'babel',
           options: {
@@ -84,7 +85,7 @@ new webpack.optimize.UglifyJsPlugin({
       },
       {
         test : /\.js$/,
-        include : path.resolve(__dirname, "app"),,
+        include : path.resolve(__dirname, "app"),
         loader : 'babel-loader',
         options : {
           presets : ['react','es2015','stage-2']

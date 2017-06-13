@@ -3,7 +3,6 @@ module.exports = function(){
 
 
 
-	var menu_array=['main','wedding_flowers','bouquets','flower_composition','contacts',];
 
 	$(function() {
 
@@ -29,10 +28,7 @@ module.exports = function(){
 		});
 
 
-		// Show mobile-menu > 847
-		$(window).resize(function() {
 
-		});
 
 
 		// Cool header image scroll
@@ -86,29 +82,7 @@ module.exports = function(){
 		        return false;
 	    });
 
-			//menu div(click) AJAX
-	    	$('.blog-menu li a,.mobile-menu li a,.blog-title a').click(function(){
-	    		if($(this).attr('href')!=menu_item){
-	    			menu_item=$(this).attr('href');
-						container_ajax(menu_item);	//load content
-	    		}
-	        return false;
-	    	});
-	    	var menu_item=menu_array[1];
-				container_ajax(menu_item);	//load content
 
-
-
-				resize_credits();
-				all_resize_ready()
-				main_resize();
-
-
-				$(window).resize(function () {
-					resize_credits();
-					all_resize_ready()
-					main_resize();
-	    	});
 
 
 
@@ -126,54 +100,6 @@ module.exports = function(){
 
 	});
 
-function container_ajax(menu_item) {
-	$.ajax({
-		url: 'pages/'+menu_item+'.php',
-		method:'GET',
-		success: function(data){
-			$('#container').html(data);
-			if (menu_item==menu_array[0]) {
-				pages_min.main();
-			}
-			if (menu_item==menu_array[1]) {
-				pages_min.wedding_flowers();
-			}
-			if (menu_item==menu_array[2]) {
-				pages_min.bouquets();
-			}
-			if (menu_item==menu_array[3]) {
-				pages_min.flower_composition();
-			}
-			if (menu_item==menu_array[4]) {
-				pages_min.contacts();
-			}
-		}
-	});
-}
-function resize_credits() {
-    if ($(window).width() > 700) {
-      $('#credits').removeClass('flex_wrap flex_direct_col flex_center').addClass('flex_between');
-      $('#credits > div').removeClass();
-    }else {
-      $('#credits').removeClass('flex_between').addClass('flex_wrap flex_direct_col flex_center');
-      $('#credits > div').addClass('flex flex_center');
-    }
-}
-function all_resize_ready(){
-	$('.blog-title a').css({'font-size':$(window).width()*0.08,'margin-buttom':$(window).width()*0.017});
-	$('.blog-info').css('padding',$(window).width()*0.018);
-	$('.blog-description div').css({'font-size':$(window).width()*0.025,'margin-top':$(window).width()*0.017});
-}
-function main_resize() {
-	if ($(window).width() > 847) {
-		$(".toggle-container").addClass("hidden");
-		$("#mobile-menu").hide();
-		$(".blog-search").hide();
-	}else{
-		$(".toggle-container").removeClass("hidden");
-		$("#mobile-menu").show();
-	}
-}
 
 
 

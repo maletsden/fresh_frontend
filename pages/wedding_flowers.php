@@ -155,7 +155,7 @@
     </div>
 
     <!--<script type="text/javascript" src='js/pages/wedding_flowers.js'></script>-->
-    <script type="text/javascript" src='js/no_babel/progressively.js'></script>
+    <script type="text/javascript" src='src/js/no_babel/progressively.js'></script>
     <script>
     //exports.progressively=progressively;
     progressively.init({
