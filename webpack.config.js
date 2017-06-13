@@ -5,13 +5,13 @@ const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const extractCSS = new ExtractTextPlugin('./css/style.css');
 var postcssUrl = require("postcss-url");
-var helpers = require('./helpers');
 module.exports = {
-  context: __dirname + '/src',
+  context: __dirname + '/src/',
   entry: {
-    script_min:'./js/script',
-    pages_min:'./js/pages/common',
-    common_min:'./js/no_babel/common'/*,
+    script: './js/script',
+    pages : './js/pages/common',
+    common: './js/no_babel/common',
+    react : './app/main'/*,
     polyfills: './ts/config/polyfills',
     vendor: './ts/config/vendor',
     app: './ts/main'*/
@@ -37,7 +37,7 @@ module.exports = {
       NODE_ENV : JSON.stringify(NODE_ENV)
     }),
     new webpack.optimize.CommonsChunkPlugin({
-      name: 'common_min'
+      name: 'common'
     }),
     extractCSS,/*
     new webpack.ContextReplacementPlugin(
@@ -49,7 +49,7 @@ module.exports = {
 //
 */
 new webpack.optimize.UglifyJsPlugin({
-      include: /\_min\.js$/
+      //include: /\_min\.js$/
     })
   ],
 
@@ -77,17 +77,18 @@ new webpack.optimize.UglifyJsPlugin({
             plugins: ['transform-runtime']
           }
         }
-      }/*,
-      {
-        test: /\.ts$/,
-        use: [{
-          loader: 'awesome-typescript-loader',
-          options: { configFileName: helpers.root('src', 'tsconfig.json') }
-        }, 'angular2-template-loader']
-      }*/,
+      },
       {
         test: /\.css$/,
         use: extractCSS.extract(['css-loader', 'postcss-loader' ])
+      },
+      {
+        test : /\.js$/,
+        include : path.resolve(__dirname, "app"),,
+        loader : 'babel-loader',
+        options : {
+          presets : ['react','es2015','stage-2']
+        }
       }
     ]
 
