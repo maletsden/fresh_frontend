@@ -25,7 +25,7 @@ export const Navigation = (props) => {
              <li><a href="flower_composition">Квіткові композиції</a></li>
              <li><a href="contacts">Контакти</a></li>
             </ul>
-        <nav id='blog-menu' className="navbar navbar-inverse flex flex_center" data-spy="affix" data-offset-top="360">
+        <nav id='blog-menu' className="navbar navbar-inverse flex flex_center">
          <ul className="nav navbar-nav blog-menu flex flex_center">
            <li><a href="main">Головна сторінка</a></li>
            <li><a href="wedding_flowers">Весільна Флористика</a></li>
