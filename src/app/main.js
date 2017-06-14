@@ -15,7 +15,7 @@ class App extends Component {
           <Navigation/>
           <div id='container' className="wrapper"></div> {/* Wrapper */}
           <Footer/>
-          
+
       </div>
 
     );
