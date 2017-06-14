@@ -85,7 +85,7 @@ new webpack.optimize.UglifyJsPlugin({
       },
       {
         test : /\.js$/,
-        include : path.resolve(__dirname, "app"),
+        include : path.resolve(__dirname, "src/app"),
         loader : 'babel-loader',
         options : {
           presets : ['react','es2015','stage-2']

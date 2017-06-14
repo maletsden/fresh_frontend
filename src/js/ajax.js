@@ -20,7 +20,7 @@ module.exports = function(){
 
     function container_ajax(menu_item) {
     	$.ajax({
-    		url: 'pages/' + menu_item + '.php',
+    		url: '../pages/' + menu_item + '.php',
     		method:'GET',
     		success: function(data){
     			$('#container').html(data);
