@@ -15,10 +15,10 @@ export const Header = (props) => {
                     fresh flowers
                   </div>
                 </h3>
-              </div>
-            </div>
-          </div>
-        </div>
+              </div> {/* blog-info */}
+            </div> {/* header-inner */}
+          </div> {/* header */}
+        </div> {/* bg-white */}
       </div>
     );
 };
